@@ -1,3 +1,39 @@
 * {
-  color: aqua
+  background-color: darkgray;
+}
+
+h4{
+  background-color: gray;
+}
+
+main {
+  float: left;
+  align-content: center;
+}
+
+form {
+  background-color: white;
+}
+
+input {
+  background-color: white;
+  border-color: white;
+  border-style: none;
+}
+
+fieldset {
+  background-color: lightgrey;
+}
+label {
+  background-color: lightgrey;
+}
+
+span {
+  background-color: lightgrey;
+}
+
+button {
+  background-color: black;
+  border-color: black;
+  color: white;
 }

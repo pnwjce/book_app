@@ -12,9 +12,9 @@ require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 
 // //Postgres
-const client = new pg.Client(process.env.DATABASE_URL);
-client.connect();
-client.on('error', err => console.error(err));
+// const client = new pg.Client(process.env.DATABASE_URL);
+// client.connect();
+// client.on('error', err => console.error(err));
 
 //App
 const app = express();
