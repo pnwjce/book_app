@@ -1,39 +1,16 @@
-* {
+ html, body {
   background-color: darkgray;
 }
 
-h4{
-  background-color: gray;
+body {
+  width: 480px;
+  margin: 0 auto 0 auto;
 }
 
-main {
-  float: left;
-  align-content: center;
-}
-
-form {
-  background-color: white;
-}
-
-input {
-  background-color: white;
-  border-color: white;
-  border-style: none;
-}
-
-fieldset {
-  background-color: lightgrey;
-}
-label {
-  background-color: lightgrey;
-}
-
-span {
-  background-color: lightgrey;
-}
-
-button {
+header {
   background-color: black;
-  border-color: black;
-  color: white;
+  color: azure;
+  float: left;
+
 }
+

@@ -1,0 +1,31 @@
+h4{
+  background-color: gray;
+}
+
+form {
+  background-color: white;
+  color: black;
+}
+
+input {
+  background-color: white;
+  border-color: white;
+  border-style: none;
+}
+
+fieldset {
+  background-color: lightgrey;
+}
+label {
+  background-color: lightgrey;
+}
+
+span {
+  background-color: lightgrey;
+}
+
+button {
+  background-color: black;
+  border-color: black;
+  color: white;
+}
