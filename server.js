@@ -43,10 +43,10 @@ function search(req, res){
   }
   return superagent.get(url)
     .then(result => {
-      let books = result.body.item.map(book => new book(book));
-      res.render('/pages/searches/show', {books})
+      let books = result.body.items.map(book => new Book(book));
+      res.render('pages/searches/show', {books})
     })
-    .catch(err => console.error(err));
+    .catch(err => errorMessage(err, res));
 }
 
 function Book(book){
@@ -60,7 +60,7 @@ app.get('/*', function(req, res) {
 });
 
 function errorMessage(res){
-  res.status(500).send('something went wrong');
+  res.status(500).render('pages/error');
 } //created a function to handle the 500 errors but not sure what to do with it
 
 app.listen(PORT, () => {
