@@ -8,6 +8,14 @@
 </head>
 <body>
   <h1>Thank you for your search!</h1>
-  
+
+  <ul>
+    <% books.forEach(book => { %>
+      <li>
+        <h3><%= book.title %></h3>
+        <img src=<%= book.placeholderImage %>>
+      </li>
+      <% }) %>
+  </ul>
 </body>
 </html>
