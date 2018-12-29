@@ -12,9 +12,9 @@ require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 
 // //Postgres
-// const client = new pg.Client(process.env.DATABASE_URL);
-// client.connect();
-// client.on('error', err => console.error(err));
+const client = new pg.Client(process.env.DATABASE_URL);
+client.connect();
+client.on('error', err => console.error(err));
 
 //App
 const app = express();
@@ -25,34 +25,35 @@ app.set('view engine', 'ejs');
 
 app.get('/', home);
 
-// app.post('/searches', search);
+app.post('/searches', search);
 
 function home(req, res){
   res.render('pages/index');
 }
 
-// function search(req, res){
-//   const searchStr = req.body.search[0];
-//   const searchType = req.body.search[1];
-//   let url = 'https://www.googleapis.com/books/v1/volumes?q=';
+function search(req, res){
+  const searchStr = req.body.search[0];
+  const searchType = req.body.search[1];
+  let url = 'https://www.googleapis.com/books/v1/volumes?q=';
 
-//   if(searchType === 'title'){
-//     url += `+intitle:${searchStr}`;
-//   }else if(searchType === 'author'){
-//     url += `+inauthor:${searchStr}`;
-//   }
-//   return superagent.get(url)
-//     .then(result => {
-//       let books = result.body.item.map(book => new book(book));
-//       res.render('/pages/searches/show', {books})
-//     })
-// }
+  if(searchType === 'title'){
+    url += `+intitle:${searchStr}`;
+  }else if(searchType === 'author'){
+    url += `+inauthor:${searchStr}`;
+  }
+  return superagent.get(url)
+    .then(result => {
+      let books = result.body.item.map(book => new book(book));
+      res.render('/pages/searches/show', {books})
+    })
+    .catch(err => console.error(err));
+}
 
-// function Book(book){
-//   console.log(book);
-//   this.title = book.volumeInfo.title || 'this book does not have a title';
-//   this.placeholderImage = 'https://i.imgur.com/J5LVHEL.jpeg'
-// }
+function Book(book){
+  console.log(book);
+  this.title = book.volumeInfo.title || 'this book does not have a title';
+  this.placeholderImage = 'https://i.imgur.com/J5LVHEL.jpeg'
+}
 
 app.get('/*', function(req, res) {
   res.status(404).send('you are in the wrong place');
