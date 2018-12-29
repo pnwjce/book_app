@@ -21,12 +21,16 @@
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 -->
 
-Number and name of feature: ________________________________
+===========
 
-Estimate of time needed to complete: _____
+<b>Feature 01: Server-side rendering</b>
+- Estimated time needed to complete: 1.5 hr
+- Start time: 10:30am
+- End time: 12:25pm
+- Actual Time Needed: 2 hr
 
-Start time: _____
-
-Finish time: _____
-
-Actual time needed to complete: _____
+<b>Feature 02: Search the Google Books API</b>
+- Estimated time needed to complete: 1 hr
+- Start time: 12:30pm
+- End time: 2:50pm
+- Actual Time Needed: .75 hr
