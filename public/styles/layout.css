@@ -1,0 +1,7 @@
+main {
+  position: relative;
+  border: 1px solid black;
+  float: left;
+  background-color: 4444;
+  box-sizing: border-box;
+}
