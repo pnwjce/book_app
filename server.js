@@ -50,9 +50,11 @@ function search(req, res){
 }
 
 function Book(book){
-  console.log(book);
-  this.title = book.volumeInfo.title || 'this book does not have a title';
-  this.placeholderImage = 'https://i.imgur.com/J5LVHEL.jpeg'
+  this.title = book.volumeInfo.title || 'This book does not have a title.';
+  this.author = book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown';
+  this.image = book.volumeInfo.imageLinks.thumbnail || 'https://i.imgur.com/J5LVHEL.jpeg';
+  this.description = book.volumeInfo.description || 'No description provided.';
+  console.log('book', book);
 }
 
 app.get('/*', function(req, res) {
