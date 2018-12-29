@@ -31,6 +31,24 @@
 
 <b>Feature 02: Search the Google Books API</b>
 - Estimated time needed to complete: 1 hr
-- Start time: 12:30pm
-- End time: 2:50pm
-- Actual Time Needed: .75 hr
+- Start time: 12:30pm, paused 1 hr for lunch
+- End time: 2:28pm
+- Actual Time Needed: 1 hr
+
+<b>Feature 03: Display Search Results</b>
+- Estimated time needed to complete: 5 min
+- Start time: 2:30
+- End time: 2:35pm
+- Actual Time Needed: 5 min
+
+<b>Feature 04: Error Handling</b>
+- Estimated time needed to complete: 10 mins
+- Start time: 2:35pm
+- End time: 2:40pm
+- Actual Time Needed: 5 min
+
+<b>Feature 05: Style the book application</b>
+- Estimated time needed to complete: .5 hr
+- Start time: 2:45pm
+- End time: pm
+- Actual Time Needed: 5 min
