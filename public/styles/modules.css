@@ -1,10 +1,25 @@
+nav{
+  float: right;
+}
+
+#page-title{
+  margin-top: 10px;
+}
+
 h4{
+  height: 50px;
   background-color: gray;
 }
 
 form {
   background-color: white;
   color: black;
+}
+
+.form-search{
+  margin: auto;
+  width: 75%;
+  text-align: center;
 }
 
 input {
