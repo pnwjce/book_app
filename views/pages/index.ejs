@@ -14,10 +14,20 @@
 <body>
     <header>
       <div>
-          <h2 id="page-title">Best Books</h2>
-      </div>
-      <div>
-          <nav>Nav</nav>
+        <h2 id="page-title"><a href="./index.ejs">Best Books</a></h2>
+        <div id="menuToggle">
+          <nav>
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul id="menu">
+              <li><a href="./searches/new.ejs">New Search</a></li>
+              <li><a href="./books/show.ejs">Bookshelf</a></li>
+              <li><a href="./books/detail.ejs">Add Details</a></li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </header>
     <main>
