@@ -22,11 +22,9 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('./public'));
 
 app.set('view engine', 'ejs');
-
 app.get('/', home);
-
 app.post('/searches', search);
-
+app.get('/books', showBooks);
 app.post('/books', saveBooks);
 
 function home(req, res){
@@ -50,6 +48,26 @@ function search(req, res){
     .catch(err => errorMessage(err, res));
 }
 
+function showBooks(req, res){
+  let SQL = `SELECT * FROM books WHERE id=$1;`;
+  let values = [req.params.id];
+
+  return client.query(SQL, values)
+    .then(result => {
+      const book = result.rows[0];
+      return client.query('SELECT DISTINCT bookshelf FROM books')
+        .then(booksFromBookshelf => {
+          const bookshelf = booksFromBookshelf.rows;
+          res.render('pages/books/show', {
+            book: book,
+            bookshelf: bookshelf,
+          });
+        })
+        .catch(err => errorMessage(err, res));
+    })
+    .catch(err => errorMessage(err, res));
+}
+
 function saveBooks(req, res){
   let SQL = `INSERT INTO books(author, title, isbn, image_url, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6)`;
   let values = [req.body.author, req.body.title, req.body.isbn, req.body.image, req.body.description, req.body.bookshelf];
@@ -68,6 +86,7 @@ function saveBooks(req, res){
     })
     .catch(err => errorMessage(err, res));
 }
+
 
 function Book(book){
   this.title = book.title || 'This book does not have a title.';
