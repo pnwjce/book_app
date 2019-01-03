@@ -43,17 +43,17 @@ function search(req, res){
   }
   return superagent.get(url)
     .then(result => {
-      let books = result.body.items.map(book => new Book(book));
+      let books = result.body.items.map(book => new Book(book.volumeInfo));
       res.render('pages/searches/show', {books})
     })
     .catch(err => errorMessage(err, res));
 }
 
 function Book(book){
-  this.title = book.volumeInfo.title || 'This book does not have a title.';
-  this.author = book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown';
-  this.image = book.volumeInfo.imageLinks.thumbnail || 'https://i.imgur.com/J5LVHEL.jpeg';
-  this.description = book.volumeInfo.description || 'No description provided.';
+  this.title = book.title || 'This book does not have a title.';
+  this.author = book.authors ? book.authors.join(', ') : 'Unknown';
+  this.image = book.imageLinks ? book.imageLinks.thumbnail : 'https://i.imgur.com/J5LVHEL.jpeg';
+  this.description = book.description || 'No description provided.';
   console.log('book', book);
 }
 
