@@ -7,17 +7,12 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>Bookshelf</h1>
+    <h1>Bookshelf</h1>
+    <h3><%= book.title %></h3>
+    <h4><%= book.author %></h4>
+    <p><%= book.description %></p>
+    <p>ISBN: <%= book.isbn %></p>
+    <p>Topic: <%= book.bookshelf %></p>
 
-  <ul>
-      <li>
-        <img src=<%= book.image %>>
-        <h3><%= book.title %></h3>
-        <h4><%= book.author %></h4>
-        <p><%= book.description %></p>
-        <p>ISBN: <%= book.isbn %></p>
-        <p>Topic: <%= book.bookshelf %></p>
-      </li>
-  </ul>
 </body>
 </html>

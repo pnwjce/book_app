@@ -24,11 +24,18 @@ app.use(express.static('./public'));
 app.set('view engine', 'ejs');
 app.get('/', home);
 app.post('/searches', search);
-app.get('/books', showBooks);
+app.get('/books/:id', showBooks);
 app.post('/books', saveBooks);
 
 function home(req, res){
-  res.render('pages/index');
+  let SQL = `SELECT * FROM books`;
+
+  return client.query(SQL)
+    .then(book => {
+      console.log('book', book);
+      res.render('pages/index', {book});
+    })
+    .catch(err => errorMessage(err, res));
 }
 
 function search(req, res){
@@ -49,13 +56,13 @@ function search(req, res){
 }
 
 function showBooks(req, res){
-  let SQL = `SELECT * FROM books WHERE id=$1;`;
+  let SQL = `SELECT * FROM books WHERE id+=$1;`;
   let values = [req.params.id];
 
   return client.query(SQL, values)
     .then(result => {
       const book = result.rows[0];
-      return client.query('SELECT DISTINCT bookshelf FROM books')
+      return client.query('SELECT * FROM books')
         .then(booksFromBookshelf => {
           const bookshelf = booksFromBookshelf.rows;
           res.render('pages/books/show', {
@@ -69,8 +76,8 @@ function showBooks(req, res){
 }
 
 function saveBooks(req, res){
-  let SQL = `INSERT INTO books(author, title, isbn, image_url, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6)`;
-  let values = [req.body.author, req.body.title, req.body.isbn, req.body.image, req.body.description, req.body.bookshelf];
+  let SQL = `INSERT INTO books(author, title, isbn, image, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6)`;
+  let values = [req.author, req.title, req.isbn, req.image, req.description, req.bookshelf];
 
   return client.query(SQL, values)
     .then(result => {
@@ -87,6 +94,10 @@ function saveBooks(req, res){
     .catch(err => errorMessage(err, res));
 }
 
+function DB(books){
+  this.author = books.author;
+  this.aut
+}
 
 function Book(book){
   this.title = book.title || 'This book does not have a title.';

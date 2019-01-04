@@ -2,11 +2,10 @@ DROP TABLE IF EXISTS books;
 CREATE TABLE IF NOT EXISTS books (
   author VARCHAR(255), 
   title VARCHAR(255),
-  isbn VARCHAR(255), 
+  isbn VARCHAR(255) PRIMARY KEY, 
   image VARCHAR(500),
   description TEXT,
   bookshelf VARCHAR(255),
-  id SERIAL PRIMARY KEY
 );
 
 
