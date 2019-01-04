@@ -32,7 +32,7 @@ function home(req, res){
 
   return client.query(SQL)
     .then(book => {
-      console.log('book', book);
+      // console.log('book', book);
       res.render('pages/index', {book});
     })
     .catch(err => errorMessage(err, res));
@@ -65,7 +65,7 @@ function showBooks(req, res){
       return client.query('SELECT * FROM books')
         .then(booksFromBookshelf => {
           const bookshelf = booksFromBookshelf.rows;
-          res.render('pages/books/show', {
+          res.render('pages/books/detail', {
             book: book,
             bookshelf: bookshelf,
           });
@@ -94,10 +94,10 @@ function saveBooks(req, res){
     .catch(err => errorMessage(err, res));
 }
 
-function DB(books){
-  this.author = books.author;
-  this.aut
-}
+// function DB(books){
+//   this.author = books.author;
+//   this.aut
+// }
 
 function Book(book){
   this.title = book.title || 'This book does not have a title.';
