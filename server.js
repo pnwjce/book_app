@@ -23,9 +23,9 @@ app.use(express.static('./public'));
 
 app.set('view engine', 'ejs');
 app.get('/', home);
-app.get('/searches', search);
+app.get('/searches/new', searchHome);
 app.post('/searches', search);
-app.get('/books/;id', showBook);
+app.get('/books/:id', showBook);
 app.post('/books', saveBooks);
 
 function home(req, res){
@@ -37,6 +37,10 @@ function home(req, res){
       res.render('pages/index', {book});
     })
     .catch(err => errorMessage(err, res));
+}
+
+function searchHome(req, res){
+  res.render('pages/searches/new');
 }
 
 function search(req, res){

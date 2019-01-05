@@ -14,7 +14,7 @@
 <body>
     <header>
       <div>
-        <h2 id="page-title"><a href="./index.ejs">Best Books</a></h2>
+        <h2 id="page-title"><a href="./index">Best Books</a></h2>
         <div id="menuToggle">
           <nav>
             <input type="checkbox" />
@@ -22,7 +22,7 @@
             <span></span>
             <span></span>
             <ul id="menu">
-              <li><a href="/searches">New Search</a></li>
+              <li><a href="./searches/new">New Search</a></li>
               <li><a href="./books">Bookshelf</a></li>
               <li><a href="./books/detail">Add Details</a></li>
             </ul>
@@ -31,7 +31,7 @@
       </div>
     </header>
     <main>
-      <div class="form-search">
+      <!-- <div class="form-search">
           <h4>Search by Title or Author</h4>
       </div>
       <div class="form-search">
@@ -51,7 +51,7 @@
             </fieldset>
             <button type="submit">Search the Google Books API</button>
           </form>
-      </div>
+      </div> -->
       <div>
           <h1>Bookshelf</h1>
           <h3><%= book.rows[0].title %></h3>
