@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/modules.css">
+  <link rel="stylesheet" href="styles/icons.css">
+  <title>Document</title>
+</head>
+<body>
+    <div>
+        <h3><%= book.rows[0].title %></h3>
+        <img src="<%= book.rows[0].image %>" alt="">
+        <h4><%= book.rows[0].author %></h4>
+        <p><%= book.rows[0].description %></p>
+        <p>ISBN: <%= book.rows[0].isbn %></p>
+        <p>Topic: <%= book.rows[0].bookshelf %></p>
+    </div>
+  
+</body>
+</html>

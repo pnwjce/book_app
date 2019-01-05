@@ -23,8 +23,9 @@ app.use(express.static('./public'));
 
 app.set('view engine', 'ejs');
 app.get('/', home);
+app.get('/searches/new', searchHome);
 app.post('/searches', search);
-app.get('/books/:id', showBooks);
+app.get('/books/:id', showBook);
 app.post('/books', saveBooks);
 
 function home(req, res){
@@ -36,6 +37,10 @@ function home(req, res){
       res.render('pages/index', {book});
     })
     .catch(err => errorMessage(err, res));
+}
+
+function searchHome(req, res){
+  res.render('pages/searches/new');
 }
 
 function search(req, res){
@@ -55,22 +60,15 @@ function search(req, res){
     .catch(err => errorMessage(err, res));
 }
 
-function showBooks(req, res){
-  let SQL = `SELECT * FROM books WHERE id+=$1;`;
+function showBook(req, res){
+  console.log(req);
+  let SQL = `SELECT * FROM books WHERE id=$1;`;
   let values = [req.params.id];
 
   return client.query(SQL, values)
     .then(result => {
       const book = result.rows[0];
-      return client.query('SELECT * FROM books')
-        .then(booksFromBookshelf => {
-          const bookshelf = booksFromBookshelf.rows;
-          res.render('pages/books/show', {
-            book: book,
-            bookshelf: bookshelf,
-          });
-        })
-        .catch(err => errorMessage(err, res));
+      return client.query('SELECT DISTINCT bookshelf * FROM books;', book);
     })
     .catch(err => errorMessage(err, res));
 }
@@ -81,9 +79,9 @@ function saveBooks(req, res){
 
   return client.query(SQL, values)
     .then(result => {
-      let SQL = `SELECT id FROM books WHERE isbn=$3`;
+      let SQL = `SELECT id FROM books WHERE id=$1`;
       let values = [req.body.isbn];
-      console.log('in the return client', result);
+      console.log('in the return client');
       //Store in our DB
       return client.query(SQL, values)
         .then(result => {
@@ -94,10 +92,6 @@ function saveBooks(req, res){
     .catch(err => errorMessage(err, res));
 }
 
-function DB(books){
-  this.author = books.author;
-  this.aut
-}
 
 function Book(book){
   this.title = book.title || 'This book does not have a title.';
