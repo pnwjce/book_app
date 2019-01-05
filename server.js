@@ -23,6 +23,7 @@ app.use(express.static('./public'));
 
 app.set('view engine', 'ejs');
 app.get('/', home);
+app.get('/searches', search);
 app.post('/searches', search);
 app.get('/books/;id', showBook);
 app.post('/books', saveBooks);
