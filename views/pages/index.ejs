@@ -1,34 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="styles/reset.css">
-  <link rel="stylesheet" href="styles/base.css">
-  <link rel="stylesheet" href="styles/layout.css">
-  <link rel="stylesheet" href="styles/modules.css">
-  <link rel="stylesheet" href="styles/icons.css">
-  <title>Book Collection</title>
+  <% include ../layout/head %>
 </head>
 <body>
     <header>
-      <div>
-        <h2 id="page-title"><a href="./index">Best Books</a></h2>
-        <div id="menuToggle">
-          <nav>
-            <input type="checkbox" />
-            <span></span>
-            <span></span>
-            <span></span>
-            <ul id="menu">
-              <li><a href="./searches/new">New Search</a></li>
-              <li><a href="./books">Bookshelf</a></li>
-              <li><a href="./books/detail">Add Details</a></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
+
+        <% include ../layout/header %>
+        
     </header>
     <main>
       <!-- <div class="form-search">
