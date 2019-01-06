@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="styles/reset.css">
-  <link rel="stylesheet" href="styles/base.css">
-  <link rel="stylesheet" href="styles/layout.css">
-  <link rel="stylesheet" href="styles/modules.css">
-  <link rel="stylesheet" href="styles/icons.css">
-  <title>Document</title>
+  <% include ../../layout/head-searches %>
 </head>
 <body>
+    <header>
+
+        <% include ../../layout/header-searches %>
+        
+    </header>
   <h1>Thank you for your search!</h1>
 
-  <ul>
-    <% books.forEach(book => { %>
-      <li>
-        <img src=<%= book.image %>>
-        <h3><%= book.title %></h3>
-        <h4><%= book.author %></h4>
-        <p><%= book.description %></p>
+  <section class="form-show">
 
-      </li>
-      <% }) %>
+    <% books.forEach(book => { %>
+
+      <div class="individual-book">
+        <form id="tableForm" action="/books" method="POST">
+          <img src="<%= book.image %>">
+          <input type="text" name="title" value="<%= book.title %>">
+          <input type="text" name="author" value="<%= book.author %>">
+          <input type="text" name="description" value="<%= book.description %>">
+          <input type="submit">
+        </form>
+      </div>
+
+    <% }) %>
+    </section>
   </ul>
 </body>
 </html>
