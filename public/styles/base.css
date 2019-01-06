@@ -1,6 +1,5 @@
  html, body {
   background-color: darkgray;
-  /* box-sizing: border-box; */
 }
 
 body {
@@ -9,11 +8,11 @@ body {
 }
 
 header {
+  display: block;
   width: 100%;
   height: 60px;
   background-color: black;
   color: azure;
-  display: grid;
 }
 
 header a {
@@ -25,22 +24,23 @@ a:hover {
 }
 
 #menuToggle {
-  display: grid;
+  float: right;
   position: relative;
-  top: 50px;
-  left: 50px;
+  top: 3px;
+  left: -25px;
   z-index: 1;
   -webkit-user-select: none;
   user-select: none;
 }
 
 #menuToggle input {
-  display: grid;
+  display: block;
+  float: right;
   width: 40px;
   height: 32px;
   position: absolute;
-  top: -7px;
-  left: -5px;
+  top: 3px;
+  left: -25px;
   cursor: pointer;
   opacity: 0;
   z-index: 2;
@@ -48,7 +48,7 @@ a:hover {
 }
 
 #menuToggle span {
-  display: grid;
+  display: block;
   width: 33px;
   height: 4px;
   margin-bottom: 5px;
@@ -89,25 +89,30 @@ a:hover {
 
 #menu {
   position: absolute;
-  width: 200px;
-  margin: -100px 0 0 -50px;
+  width: 125px;
+  margin: 15px 0 0 -117px;
   padding: 25px;
   background: black;
+  visibility:hidden;
+  opacity: 0;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   transform-origin: 0% 0%;
-  transform: translate(-100%, 0);
+  transform: translate(0, -100%);
+  transition:opacity 0.5s linear;
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
 
 #menu li {
   padding: 10px 0;
   font-size: 22px;
-  color: lightblue;
 }
 
 #menuToggle input:checked ~ ul {
   transform: none;
+  visibility:visible;
+  transition:visibility 0s linear 0.25s,opacity 0.25s linear;
+  opacity: 1;
 }
 
 main {
