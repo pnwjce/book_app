@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS books (
   isbn VARCHAR(255) PRIMARY KEY, 
   image VARCHAR(500),
   description TEXT,
-  bookshelf VARCHAR(255),
+  bookshelf VARCHAR(255)
 );
 
 
